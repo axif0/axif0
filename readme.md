@@ -1,1 +1,1 @@
-[Hello!](https://wzbg2.csb.app/)
+[](https://wzbg2.csb.app/)
