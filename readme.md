@@ -37,8 +37,6 @@ Hi, I'm Md Asiful Alam , a passionate self-taught Full Stack Web Developer 🚀 
 ![Muhammad-Asif0's github stats](https://github-readme-stats.vercel.app/api?username=Muhammad-Asif0&show_icons=true&theme=dracula)
 
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Muhammad-Asif0269&layout=compact&theme=merko)](https://github.com/Muhammad-Asif0/github-readme-stats)
-
 
 ## 𝗩𝗶𝘀𝗶𝘁𝗼𝗿𝘀
 
