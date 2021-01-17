@@ -36,7 +36,6 @@ Hi, I'm Md Asiful Alam , a passionate self-taught Full Stack Web Developer 🚀 
 
 ![Muhammad-Asif0's github stats](https://github-readme-stats.vercel.app/api?username=Muhammad-Asif0&show_icons=true&theme=dracula)
 
-### :dart: Weekly Fuck The Code
 
 
 
