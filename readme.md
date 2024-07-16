@@ -29,20 +29,18 @@ Hi, I'm Md Asiful Alam , a passionate self-taught Full Stack Web Developer 🚀 
  
 ### Open Source Contributions
 
-I've contributed to several open-source projects, focusing on enhancing functionality, fixing bugs, and improving documentation. Below are some highlights of my contributions:
+I've actively contributed to several open-source projects, enhancing their functionality and documentation. Here are some highlights:
 
 #### NetworkX
-- **Pull Request #7052**: Worked on enhancements related to graph algorithms, specifically focusing on optimizing performance and readability of the codebase. This involved reviewing and implementing suggestions from other contributors to ensure the code adheres to best practices and maintains high standards of quality. [NetworkX Pull #7052](https://github.com/networkx/networkx/pull/7052)
+- Improved graph algorithm performance and readability in [PR #7052](https://github.com/networkx/networkx/pull/7052).
 
 #### nx-parallel
-- **Issue #15**: Identified and reported a bug affecting parallel processing capabilities in certain scenarios. This issue led to an in-depth discussion and ultimately resulted in a patch that improved the stability of parallel operations. [nx-parallel Issue #15](https://github.com/networkx/nx-parallel/issues/15)
-- **Pull Request #16**: Submitted a comprehensive solution to enhance the efficiency of parallel computations, including unit tests to validate the improvements. This PR was merged after thorough review and testing. [nx-parallel Pull #16](https://github.com/networkx/nx-parallel/pull/16)
+- Fixed a bug affecting parallel processing in [issue #15](https://github.com/networkx/nx-parallel/issues/15) and enhanced efficiency in [PR #16](https://github.com/networkx/nx-parallel/pull/16).
 
 #### Scribe-Data
-- **Pull Request #175**: Contributed to the project by removing articles from the machine translation process using SPARQL, significantly improving the accuracy and efficiency of data processing. This contribution was part of a larger effort to refine the data handling mechanisms within the project. [Scribe-Data Pull #175](https://github.com/scribe-org/Scribe-Data/pull/175)
+- Optimized machine translation process in [PR #175](https://github.com/scribe-org/Scribe-Data/pull/175).
 
 #### in-toto-jenkins-plugin
-- **Pull Request #16**: Implemented a new feature for integrating GrafeasTransport with link submissions, enhancing the plugin's compatibility with various artifact management systems. This PR was aimed at improving the plugin's robustness and flexibility for users. [in-toto-jenkins-plugin Pull #16](https://github.com/in-toto/in-toto-jenkins-plugin/pull/16)
-- **Pull Request #17**: Added integration tests for the newly implemented feature, ensuring reliability and facilitating future development efforts. This contribution was crucial for maintaining high-quality standards in the plugin's development cycle. [in-toto-jenkins-plugin Pull #17](https://github.com/in-toto/in-toto-jenkins-plugin/pull/17)
+- Integrated GrafeasTransport with link submissions in [PR #16](https://github.com/in-toto/in-toto-jenkins-plugin/pull/16) and added integration tests in [PR #17](https://github.com/in-toto/in-toto-jenkins-plugin/pull/17).
 
-These contributions reflect my commitment to open-source software development, emphasizing collaboration, continuous improvement, and adherence to best coding practices.
+These contributions demonstrate my commitment to open-source development, focusing on collaboration and quality.
