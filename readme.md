@@ -1,12 +1,12 @@
 
-<p>
-  <a href="https://count.getloli.com/"><img src="https://count.getloli.com/get/@:itgoyo"></a>
- 
-</p>
+
 
 ### Hi there, I'm [Asif](https://github.com/Muhammad-Asif0) 👋
 <h3 align="center">A passionate beginner Programmer from Bangladesh</h3>
-
+<p>
+  <a href="https://count.getloli.com/"><img src="https://github-readme-utils.vercel.app/api/gif/anime"></a>
+ 
+</p>
 Hi, I'm Md Asiful Alam , a passionate self-taught Full Stack Web Developer 🚀 from Bangladesh.
 
 **Talking about Personal Stuffs:**
