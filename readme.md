@@ -1,15 +1,13 @@
 
-
-
-### Hi there, I'm [Asif](https://github.com/axif0) 👋
-<h3 align="center">A passionate beginner Programmer from Bangladesh</h3>
-
+<a href="https://github.com/drkostas">
+    <img src="https://readme-typing-svg.demolab.com?font=Georgia&size=18&duration=2000&pause=100&multiline=true&width=500&height=80&lines=Hello+I'm+Asif;+%7C+Open+source+%7C+Contributor+From+Bangladesh;CLI+%7C+API+%7C+Bots" alt="Typing SVG" />
+</a>
+<br/>
+  
 <p align="center">
   <img height="200" src="https://github-readme-utils.vercel.app/api/gif/anime" alt="Random GiF">
 </p>
-
-Hi, I'm Md Asiful Alam , a passionate self-taught Full Stack Web Developer 🚀 from Bangladesh.
-
+ 
 **Talking about Personal Stuffs:**
 
 - 👨🏽‍💻 I’m currently working on something cool :wink:;
