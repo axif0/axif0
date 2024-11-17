@@ -15,6 +15,7 @@
 - 💬 Ask me about anything, I am happy to help;
 - 📫 How to reach me: [@afi570](muhamadasif570@gmail.com);
 
+<img src="https://github.com/images/modules/search/mona-love.png" width="7.5%">
 ## 𝗦𝘁𝗮𝘁𝘀
 <div align="center" > 
 <div>
