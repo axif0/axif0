@@ -29,20 +29,4 @@
  
 </div>
  
-### Open Source Contributions
-
-I've actively contributed to several open-source projects, enhancing their functionality and documentation. Here are some highlights:
-
-#### NetworkX
-- Improved graph algorithm performance and readability in [PR #7052](https://github.com/networkx/networkx/pull/7052).
-
-#### nx-parallel
-- Fixed a bug affecting parallel processing in [issue #15](https://github.com/networkx/nx-parallel/issues/15) and enhanced efficiency in [PR #16](https://github.com/networkx/nx-parallel/pull/16).
-
-#### Scribe-Data
-- Optimized machine translation process in [PR #175](https://github.com/scribe-org/Scribe-Data/pull/175).
-
-#### in-toto-jenkins-plugin
-- Integrated GrafeasTransport with link submissions in [PR #16](https://github.com/in-toto/in-toto-jenkins-plugin/pull/16) and added integration tests in [PR #17](https://github.com/in-toto/in-toto-jenkins-plugin/pull/17).
-
-These contributions demonstrate my commitment to open-source development, focusing on collaboration and quality.
+ 
