@@ -10,8 +10,7 @@
  
 **Talking about Personal Stuffs:**
 
-- 👨🏽‍💻 I’m currently working on something cool :wink:;
-- 🌱 I’m looking - To collaborate on open-source projects
+I'm passionate about learning new tech even it is completely unknown and sounds interesting to me. Rather complaining others I like to do my tasks within time limit and try to contribute to others.
 - 💬 Ask me about anything, I am happy to help;
 - 📫 How to reach me: [@afi570](muhamadasif570@gmail.com);
 
