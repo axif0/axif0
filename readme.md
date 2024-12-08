@@ -28,9 +28,7 @@ I'm passionate about learning new tech even it is completely unknown and sounds 
  
 </div>
  
-**Blog post**
-<br>
-[Medium](https://medium.com/@muhamadasif570/kickstart-your-open-source-journey-a-guide-to-lfx-mentorship-outreachy-and-beyond-90dd5f0f612e) about LFX and Outreachy
+**Blog post** [Medium](https://medium.com/@muhamadasif570/kickstart-your-open-source-journey-a-guide-to-lfx-mentorship-outreachy-and-beyond-90dd5f0f612e) about LFX and Outreachy
  
 <!-- https://github.com/feijoes/feijoes/tree/master -->
 
