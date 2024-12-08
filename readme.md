@@ -12,7 +12,7 @@
 
 I'm passionate about learning new tech even it is completely unknown and sounds interesting to me. Rather complaining others I like to do my tasks within time limit and try to contribute to others.
 - 💬 Ask me about anything, I am happy to help;
-- 📫 How to reach me: [@afi570](muhamadasif570@gmail.com);
+- 📫 How to reach me: [@afi570](https://www.linkedin.com/in/afi570/);
 
 <img src="https://github.com/images/modules/search/mona-love.png" width="7.5%">
 ## 𝗦𝘁𝗮𝘁𝘀
