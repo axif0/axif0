@@ -25,7 +25,7 @@ I'm passionate about learning new tech even it is completely unknown and sounds 
 </div>
 
  [![](https://visitcount.itsvg.in/api?id=axif0&icon=0&color=0)](https://visitcount.itsvg.in)
- 
+ ![](https://komarev.com/ghpvc/?username=axif0&color=green)
 </div>
  
 **Blog post** [Medium](https://medium.com/@muhamadasif570/kickstart-your-open-source-journey-a-guide-to-lfx-mentorship-outreachy-and-beyond-90dd5f0f612e) about LFX and Outreachy
