@@ -24,7 +24,7 @@ I'm passionate about learning new tech even it is completely unknown and sounds 
  
 </div>
 
- [![](https://visitcount.itsvg.in/api?id=axif0&icon=0&color=0)](https://visitcount.itsvg.in)
+ [![1](https://visitcount.itsvg.in/api?id=axif0&icon=0&color=0)](https://visitcount.itsvg.in)
  
 </div>
  
