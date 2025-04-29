@@ -8,7 +8,7 @@
   <img height="200" src="https://github-readme-utils.vercel.app/api/gif/anime" alt="Random GiF">
 </p>
  
-**Talking about Personal Stuffs:**
+**Talking about Personal Stuffs:** ![image](https://64.media.tumblr.com/93edd69c8d40da06bc3675af6b7c54cf/6a4882f7400b4ba7-b9/s75x75_c1/20e244949b842a7d6add264e62b61cd731f27811.gifv)
 
 I'm passionate about learning new tech even it is completely unknown and sounds interesting to me. Rather complaining others I like to do my tasks within time limit and try to contribute to others.
 - 💬 Ask me about anything, I am happy to help;
