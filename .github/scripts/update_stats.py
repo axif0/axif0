@@ -30,7 +30,7 @@ stats_block = f""" GitHub Activity Summary (Updated Daily)
 """
 
 # Inject into README.md
-readme_path = "README.md"
+readme_path = "readme.md"
 with open(readme_path, "r") as f:
     lines = f.readlines()
 
