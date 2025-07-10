@@ -39,10 +39,10 @@ I'm passionate about learning new tech even it is completely unknown and sounds 
 <!-- STATS:START -->
  GitHub Activity Summary (Updated Daily)
 
-- Public repositories: 12
-- Total stars: 557
-- Total forks: 42
-- Contributors across repos: 2
+- Public repositories: 35
+- Total stars: 5
+- Total forks: 7
+- Contributors across repos: 4
 - Last updated: 2025-07-10
 
 <!-- STATS:END -->
