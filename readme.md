@@ -18,7 +18,6 @@ I'm passionate about learning new tech even it is completely unknown and sounds 
 ## 𝗦𝘁𝗮𝘁𝘀
 <div align="center" > 
 <div>
-<img src="http://github-profile-summary-cards.vercel.app/api/cards/stats?username=axif0&theme=github_dark" width="32.5%">
 <img src="http://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=axif0&theme=github_dark" width="32.5%">
 <img src="http://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=axif0&theme=github_dark&utcOffset=8" width="32.5%">
  
@@ -35,3 +34,15 @@ I'm passionate about learning new tech even it is completely unknown and sounds 
 <!-- https://github.com/PabloLec/website-to-gif-->
 
 <!-- https://user-images.githubusercontent.com/14244685/87203964-90470080-c325-11ea-97b6-2da5a6e0ddbb.gif-->
+
+
+<!-- STATS:START -->
+ GitHub Activity Summary (Updated Daily)
+
+- Public repositories: 12
+- Total stars: 557
+- Total forks: 42
+- Contributors across repos: 2
+- Last updated: 2025-07-10
+
+<!-- STATS:END -->
