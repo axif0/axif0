@@ -26,50 +26,60 @@ for repo in repos:
 # Get Codeforces stats
 def get_codeforces_stats():
     try:
-        # Use Codeforces API
-        api_url = 'https://codeforces.com/api/user.status?handle=asif2001'
-        response = requests.get(api_url)
+        # Use Codeforces API to get user info first
+        user_info_url = 'https://codeforces.com/api/user.info?handles=asif2001'
+        user_info_response = requests.get(user_info_url)
         
-        if response.status_code == 200:
-            data = response.json()
+        if user_info_response.status_code != 200:
+            print(f"Error fetching user info: {user_info_response.status_code}")
+            return {'total_solved': 0, 'daily_solved': 0, 'remaining': 2, 'punishment': 0}
+            
+        user_info = user_info_response.json()
+        if user_info['status'] != 'OK':
+            print(f"API error: {user_info.get('comment', 'Unknown error')}")
+            return {'total_solved': 0, 'daily_solved': 0, 'remaining': 2, 'punishment': 0}
+
+        # Get submission history
+        submissions_url = 'https://codeforces.com/api/user.status?handle=asif2001'
+        submissions_response = requests.get(submissions_url)
+        
+        if submissions_response.status_code == 200:
+            data = submissions_response.json()
             if data['status'] == 'OK':
                 submissions = data['result']
                 
                 # Count unique solved problems
                 solved_problems = set()
+                today_solved = set()  # Track problems solved today
+                today = datetime.utcnow().strftime('%Y-%m-%d')
+                
                 for sub in submissions:
-                    if sub['verdict'] == 'OK':  # AC submission
-                        problem_key = f"{sub['problem']['contestId']}{sub['problem']['index']}"
+                    if sub['verdict'] == 'OK':  # Accepted submission
+                        problem_key = f"{sub['problem']['contestId']}-{sub['problem']['index']}"
                         solved_problems.add(problem_key)
+                        
+                        # Check if solved today
+                        sub_time = datetime.fromtimestamp(sub['creationTimeSeconds'])
+                        if sub_time.strftime('%Y-%m-%d') == today:
+                            today_solved.add(problem_key)
                 
                 # Get daily solved problems from a file
                 daily_solved_file = ".github/data/cf_daily_solved.txt"
-                today = datetime.utcnow().strftime('%Y-%m-%d')
-                daily_solved = 0
-                last_date = None
+                daily_solved = len(today_solved)  # Use actual solved count for todayfsf
                 
                 # Create data directory if it doesn't exist
                 os.makedirs(os.path.dirname(daily_solved_file), exist_ok=True)
                 
-                # Read existing data or create new file
-                if os.path.exists(daily_solved_file):
-                    with open(daily_solved_file, 'r') as f:
-                        lines = f.readlines()
-                        if lines:
-                            last_date, count = lines[-1].strip().split(',')
-                            if last_date == today:
-                                daily_solved = int(count)
-                
-                # If it's a new day or file doesn't exist, create/update with today's data
-                if last_date != today:
-                    daily_solved = 0
-                    with open(daily_solved_file, 'w') as f:
-                        f.write(f"{today},{daily_solved}\n")
+                # Update the daily solved count file
+                with open(daily_solved_file, 'w') as f:
+                    f.write(f"{today},{daily_solved}\n")
                     
                 # Calculate remaining problems and punishment
                 DAILY_QUOTA = 2
                 remaining = max(0, DAILY_QUOTA - daily_solved)
                 punishment = remaining if datetime.utcnow().hour >= 23 else 0  # Check if day is almost over
+                
+                print(f"Debug - Total solved: {len(solved_problems)}, Today solved: {daily_solved}")
                 
                 return {
                     'total_solved': len(solved_problems),
@@ -78,7 +88,7 @@ def get_codeforces_stats():
                     'punishment': punishment
                 }
         
-        print(f"Error fetching Codeforces stats: API response {response.status_code}")
+        print(f"Error fetching Codeforces stats: API response {submissions_response.status_code}")
         return {
             'total_solved': 0,
             'daily_solved': 0,
