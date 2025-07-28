@@ -32,6 +32,9 @@ jobs:
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add README.md
-          git add .github/data/cf_daily_solved.txt
+          # Only add cf_daily_solved.txt if it exists
+          if [ -f .github/data/cf_daily_solved.txt ]; then
+            git add .github/data/cf_daily_solved.txt
+          fi
           git commit -m "Update GitHub stats [bot]" || echo "No changes"
           git push
