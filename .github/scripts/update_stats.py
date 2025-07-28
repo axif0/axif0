@@ -26,27 +26,17 @@ for repo in repos:
 # Get Codeforces stats
 def get_codeforces_stats():
     try:
-        # Use Codeforces API to get user info first
-        user_info_url = 'https://codeforces.com/api/user.info?handles=asif2001'
-        user_info_response = requests.get(user_info_url)
-        
-        if user_info_response.status_code != 200:
-            print(f"Error fetching user info: {user_info_response.status_code}")
-            return {'total_solved': 0, 'daily_solved': 0, 'remaining': 2, 'punishment': 0}
-            
-        user_info = user_info_response.json()
-        if user_info['status'] != 'OK':
-            print(f"API error: {user_info.get('comment', 'Unknown error')}")
-            return {'total_solved': 0, 'daily_solved': 0, 'remaining': 2, 'punishment': 0}
-
         # Get submission history
         submissions_url = 'https://codeforces.com/api/user.status?handle=asif2001'
         submissions_response = requests.get(submissions_url)
+        
+        print(f"Debug - API Response Status: {submissions_response.status_code}")
         
         if submissions_response.status_code == 200:
             data = submissions_response.json()
             if data['status'] == 'OK':
                 submissions = data['result']
+                print(f"Debug - Total submissions found: {len(submissions)}")
                 
                 # Count unique solved problems
                 solved_problems = set()
@@ -54,18 +44,27 @@ def get_codeforces_stats():
                 today = datetime.utcnow().strftime('%Y-%m-%d')
                 
                 for sub in submissions:
-                    if sub['verdict'] == 'OK':  # Accepted submission
-                        problem_key = f"{sub['problem']['contestId']}-{sub['problem']['index']}"
-                        solved_problems.add(problem_key)
-                        
-                        # Check if solved today
-                        sub_time = datetime.fromtimestamp(sub['creationTimeSeconds'])
-                        if sub_time.strftime('%Y-%m-%d') == today:
-                            today_solved.add(problem_key)
+                    try:
+                        if sub['verdict'] == 'OK':  # Accepted submission
+                            problem = sub['problem']
+                            problem_key = f"{problem.get('contestId', '0')}-{problem.get('index', '0')}"
+                            solved_problems.add(problem_key)
+                            
+                            # Check if solved today
+                            sub_time = datetime.fromtimestamp(sub['creationTimeSeconds'])
+                            if sub_time.strftime('%Y-%m-%d') == today:
+                                today_solved.add(problem_key)
+                    except Exception as e:
+                        print(f"Debug - Error processing submission: {e}")
+                        continue
+                
+                print(f"Debug - Unique problems solved: {len(solved_problems)}")
+                print(f"Debug - Problems solved today: {len(today_solved)}")
+                print(f"Debug - Sample problem keys: {list(solved_problems)[:5]}")
                 
                 # Get daily solved problems from a file
                 daily_solved_file = ".github/data/cf_daily_solved.txt"
-                daily_solved = len(today_solved)  # Use actual solved count for todayfsf
+                daily_solved = len(today_solved)  # Use actual solved count for today
                 
                 # Create data directory if it doesn't exist
                 os.makedirs(os.path.dirname(daily_solved_file), exist_ok=True)
@@ -79,14 +78,15 @@ def get_codeforces_stats():
                 remaining = max(0, DAILY_QUOTA - daily_solved)
                 punishment = remaining if datetime.utcnow().hour >= 23 else 0  # Check if day is almost over
                 
-                print(f"Debug - Total solved: {len(solved_problems)}, Today solved: {daily_solved}")
-                
-                return {
+                stats = {
                     'total_solved': len(solved_problems),
                     'daily_solved': daily_solved,
                     'remaining': remaining,
                     'punishment': punishment
                 }
+                
+                print(f"Debug - Final stats: {stats}")
+                return stats
         
         print(f"Error fetching Codeforces stats: API response {submissions_response.status_code}")
         return {
