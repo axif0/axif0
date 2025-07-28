@@ -170,29 +170,23 @@ stats_block = f""" GitHub Activity Summary (Updated Daily)
 <tr>
 <td width="33%" align="center">
 
-### 📊 Codeforces Progress
-- Total problems solved: {cf_stats['total_solved']}
-- Today's progress: {cf_stats['daily_solved']}/2 problems
-{f"- 🔴 Punishment: {cf_stats['punishment']} problems pending" if cf_stats['punishment'] > 0 else ("- ✅ Daily quota completed!" if cf_stats['remaining'] == 0 else f"- ⚠️ Remaining today: {cf_stats['remaining']} problems")}
+### [📊 Codeforces](https://codeforces.com/profile/asif2001)
+`{cf_stats['total_solved']} solved` • `{cf_stats['daily_solved']}/2 today`
+{f"🔴 {cf_stats['punishment']} pending" if cf_stats['punishment'] > 0 else ("✅ Done" if cf_stats['remaining'] == 0 else f"⚠️ {cf_stats['remaining']} left")}
 
 </td>
 <td width="33%" align="center">
 
-### 🌟 Monthly Organizations
-**Goal Status: {' 🟢 Achieved' if monthly_goal_achieved else ' 🔴 Failed'}**
-Target: {MONTHLY_ORG_GOAL} successful contributions
-{chr(10).join(f"- {org}: 🟢 {stats['success']} merged | 🔴 {stats['failed']} closed" for org, stats in monthly_org_stats.items())}
-**Total: {total_monthly_success}/{MONTHLY_ORG_GOAL}**
+### 🌟 Monthly
+`{total_monthly_success}/{MONTHLY_ORG_GOAL} orgs` {' 🟢' if monthly_goal_achieved else ' 🔴'}
+{chr(10).join(f"`{org}`: {stats['success']}✓ {stats['failed']}✗" for org, stats in monthly_org_stats.items())}
 
 </td>
 <td width="33%" align="center">
 
-### 🔄 Weekly Pull Requests
-**Goal Status: {' 🟢 Achieved' if weekly_goal_achieved else ' 🔴 Failed'}**
-Target: {WEEKLY_PR_GOAL} pull requests per week
-- 🟢 {weekly_success} successfully merged
-- 🔴 {weekly_failed} closed without merging
-**Total: {weekly_success + weekly_failed}/{WEEKLY_PR_GOAL}**
+### 🔄 Weekly
+`{weekly_success + weekly_failed}/{WEEKLY_PR_GOAL} PRs` {' 🟢' if weekly_goal_achieved else ' 🔴'}
+`{weekly_success}✓ {weekly_failed}✗`
 
 </td>
 </tr>
