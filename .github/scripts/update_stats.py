@@ -3,7 +3,7 @@ from github import Github
 from datetime import datetime, timedelta
 from collections import defaultdict
 import requests
-from bs4 import BeautifulSoup
+import json
 
 # GitHub token for authentication
 token = os.environ["GH_TOKEN"]
@@ -26,48 +26,64 @@ for repo in repos:
 # Get Codeforces stats
 def get_codeforces_stats():
     try:
-        # Fetch Codeforces profile page
-        response = requests.get('https://codeforces.com/profile/asif2001')
-        soup = BeautifulSoup(response.text, 'html.parser')
+        # Use Codeforces API
+        api_url = 'https://codeforces.com/api/user.status?handle=asif2001'
+        response = requests.get(api_url)
         
-        # Find the problems solved count
-        info_blocks = soup.find_all('div', class_='_UserActivityFrame_counterValue')
-        problems_solved = 0
-        if info_blocks:
-            # The first block typically contains problems solved
-            problems_text = info_blocks[0].get_text().strip()
-            problems_solved = int(''.join(filter(str.isdigit, problems_text)))
+        if response.status_code == 200:
+            data = response.json()
+            if data['status'] == 'OK':
+                submissions = data['result']
+                
+                # Count unique solved problems
+                solved_problems = set()
+                for sub in submissions:
+                    if sub['verdict'] == 'OK':  # AC submission
+                        problem_key = f"{sub['problem']['contestId']}{sub['problem']['index']}"
+                        solved_problems.add(problem_key)
+                
+                # Get daily solved problems from a file
+                daily_solved_file = ".github/data/cf_daily_solved.txt"
+                today = datetime.utcnow().strftime('%Y-%m-%d')
+                daily_solved = 0
+                last_date = None
+                
+                # Create data directory if it doesn't exist
+                os.makedirs(os.path.dirname(daily_solved_file), exist_ok=True)
+                
+                # Read existing data or create new file
+                if os.path.exists(daily_solved_file):
+                    with open(daily_solved_file, 'r') as f:
+                        lines = f.readlines()
+                        if lines:
+                            last_date, count = lines[-1].strip().split(',')
+                            if last_date == today:
+                                daily_solved = int(count)
+                
+                # If it's a new day or file doesn't exist, create/update with today's data
+                if last_date != today:
+                    daily_solved = 0
+                    with open(daily_solved_file, 'w') as f:
+                        f.write(f"{today},{daily_solved}\n")
+                    
+                # Calculate remaining problems and punishment
+                DAILY_QUOTA = 2
+                remaining = max(0, DAILY_QUOTA - daily_solved)
+                punishment = remaining if datetime.utcnow().hour >= 23 else 0  # Check if day is almost over
+                
+                return {
+                    'total_solved': len(solved_problems),
+                    'daily_solved': daily_solved,
+                    'remaining': remaining,
+                    'punishment': punishment
+                }
         
-        # Get daily solved problems from a file
-        daily_solved_file = ".github/data/cf_daily_solved.txt"
-        today = datetime.utcnow().strftime('%Y-%m-%d')
-        daily_solved = 0
-        last_date = None
-        
-        os.makedirs(os.path.dirname(daily_solved_file), exist_ok=True)
-        
-        if os.path.exists(daily_solved_file):
-            with open(daily_solved_file, 'r') as f:
-                lines = f.readlines()
-                if lines:
-                    last_date, count = lines[-1].strip().split(',')
-                    if last_date == today:
-                        daily_solved = int(count)
-        
-        # If it's a new day, reset the counter
-        if last_date != today:
-            daily_solved = 0
-            
-        # Calculate remaining problems and punishment
-        DAILY_QUOTA = 2
-        remaining = max(0, DAILY_QUOTA - daily_solved)
-        punishment = remaining if datetime.utcnow().hour >= 23 else 0  # Check if day is almost over
-        
+        print(f"Error fetching Codeforces stats: API response {response.status_code}")
         return {
-            'total_solved': problems_solved,
-            'daily_solved': daily_solved,
-            'remaining': remaining,
-            'punishment': punishment
+            'total_solved': 0,
+            'daily_solved': 0,
+            'remaining': 2,
+            'punishment': 0
         }
     except Exception as e:
         print(f"Error fetching Codeforces stats: {e}")
@@ -130,40 +146,50 @@ total_monthly_success = sum(stats['success'] for stats in monthly_org_stats.valu
 monthly_goal_achieved = total_monthly_success >= MONTHLY_ORG_GOAL
 weekly_goal_achieved = (weekly_success + weekly_failed) >= WEEKLY_PR_GOAL
 
-# Create the Codeforces section
-cf_section = f"\n### Codeforces Progress\n"
-cf_section += f"- Total problems solved: {cf_stats['total_solved']}\n"
-cf_section += f"- Today's progress: {cf_stats['daily_solved']}/2 problems\n"
-if cf_stats['punishment'] > 0:
-    cf_section += f"- 🔴 Punishment: {cf_stats['punishment']} problems pending from today's quota\n"
-elif cf_stats['remaining'] > 0:
-    cf_section += f"- ⚠️ Remaining today: {cf_stats['remaining']} problems\n"
-else:
-    cf_section += f"- ✅ Daily quota completed!\n"
-
-# Create the monthly org contributions section
-monthly_org_section = f"\n### Monthly Organizations Goal {'Achieved 🟢' if monthly_goal_achieved else 'Failed 🔴'}\n"
-monthly_org_section += f"Goal: {MONTHLY_ORG_GOAL} successful contributions\n"
-for org, stats in monthly_org_stats.items():
-    monthly_org_section += f"- {org}: 🟢 {stats['success']} merged | 🔴 {stats['failed']} closed\n"
-monthly_org_section += f"Total successful contributions: {total_monthly_success}\n"
-
-# Create the weekly PR section
-weekly_pr_section = f"\n### Weekly Pull Requests Goal {'Achieved 🟢' if weekly_goal_achieved else 'Failed 🔴'}\n"
-weekly_pr_section += f"Goal: {WEEKLY_PR_GOAL} pull requests per week\n"
-weekly_pr_section += f"- 🟢 {weekly_success} successfully merged\n"
-weekly_pr_section += f"- 🔴 {weekly_failed} closed without merging\n"
-weekly_pr_section += f"Total PRs this week: {weekly_success + weekly_failed}\n"
-
+# Create sections with table layout
 stats_block = f""" GitHub Activity Summary (Updated Daily)
 
 - Public repositories: {len(repos)}
 - Total stars: {total_stars}
 - Total forks: {total_forks}
 - Contributors across repos: {len(contributors)}
-{cf_section}
-{monthly_org_section}
-{weekly_pr_section}
+
+<div align="center">
+
+<table>
+<tr>
+<td width="33%" align="center">
+
+### 📊 Codeforces Progress
+- Total problems solved: {cf_stats['total_solved']}
+- Today's progress: {cf_stats['daily_solved']}/2 problems
+{f"- 🔴 Punishment: {cf_stats['punishment']} problems pending" if cf_stats['punishment'] > 0 else f"- {'✅ Daily quota completed!' if cf_stats['remaining'] == 0 else f'⚠️ Remaining today: {cf_stats['remaining']} problems'}"}
+
+</td>
+<td width="33%" align="center">
+
+### 🌟 Monthly Organizations
+**Goal Status: {' 🟢 Achieved' if monthly_goal_achieved else ' 🔴 Failed'}**
+Target: {MONTHLY_ORG_GOAL} successful contributions
+{chr(10).join(f"- {org}: 🟢 {stats['success']} merged | 🔴 {stats['failed']} closed" for org, stats in monthly_org_stats.items())}
+**Total: {total_monthly_success}/{MONTHLY_ORG_GOAL}**
+
+</td>
+<td width="33%" align="center">
+
+### 🔄 Weekly Pull Requests
+**Goal Status: {' 🟢 Achieved' if weekly_goal_achieved else ' 🔴 Failed'}**
+Target: {WEEKLY_PR_GOAL} pull requests per week
+- 🟢 {weekly_success} successfully merged
+- 🔴 {weekly_failed} closed without merging
+**Total: {weekly_success + weekly_failed}/{WEEKLY_PR_GOAL}**
+
+</td>
+</tr>
+</table>
+
+</div>
+
 - Last updated: {datetime.utcnow().strftime('%Y-%m-%d')}
 """
 
