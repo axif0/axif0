@@ -44,22 +44,41 @@ I'm passionate about learning new tech even it is completely unknown and sounds 
 - Total forks: 7
 - Contributors across repos: 5
 
-### Codeforces Progress
+<div align="center">
+
+<table>
+<tr>
+<td width="33%" align="center">
+
+### 📊 Codeforces Progress
 - Total problems solved: 0
 - Today's progress: 0/2 problems
 - ⚠️ Remaining today: 2 problems
 
+</td>
+<td width="33%" align="center">
 
-### Monthly Organizations Goal Failed 🔴
-Goal: 2 successful contributions
-Total successful contributions: 0
+### 🌟 Monthly Organizations
+**Goal Status:  🔴 Failed**
+Target: 2 successful contributions
 
+**Total: 0/2**
 
-### Weekly Pull Requests Goal Failed 🔴
-Goal: 2 pull requests per week
+</td>
+<td width="33%" align="center">
+
+### 🔄 Weekly Pull Requests
+**Goal Status:  🔴 Failed**
+Target: 2 pull requests per week
 - 🟢 0 successfully merged
 - 🔴 0 closed without merging
-Total PRs this week: 0
+**Total: 0/2**
+
+</td>
+</tr>
+</table>
+
+</div>
 
 - Last updated: 2025-07-28
 
