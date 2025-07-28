@@ -163,7 +163,7 @@ stats_block = f""" GitHub Activity Summary (Updated Daily)
 ### 📊 Codeforces Progress
 - Total problems solved: {cf_stats['total_solved']}
 - Today's progress: {cf_stats['daily_solved']}/2 problems
-{f"- 🔴 Punishment: {cf_stats['punishment']} problems pending" if cf_stats['punishment'] > 0 else f"- {'✅ Daily quota completed!' if cf_stats['remaining'] == 0 else f'⚠️ Remaining today: {cf_stats['remaining']} problems'}"}
+{f"- 🔴 Punishment: {cf_stats['punishment']} problems pending" if cf_stats['punishment'] > 0 else ("- ✅ Daily quota completed!" if cf_stats['remaining'] == 0 else f"- ⚠️ Remaining today: {cf_stats['remaining']} problems")}
 
 </td>
 <td width="33%" align="center">
