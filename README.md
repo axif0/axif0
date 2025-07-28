@@ -50,29 +50,23 @@ I'm passionate about learning new tech even it is completely unknown and sounds 
 <tr>
 <td width="33%" align="center">
 
-### 📊 Codeforces Progress
-- Total problems solved: 102
-- Today's progress: 2/2 problems
-- ✅ Daily quota completed!
+### [📊 Codeforces](https://codeforces.com/profile/asif2001)
+`102 solved` • `2/2 today`
+✅ Done
 
 </td>
 <td width="33%" align="center">
 
-### 🌟 Monthly Organizations
-**Goal Status:  🔴 Failed**
-Target: 2 successful contributions
+### 🌟 Monthly
+`0/2 orgs`  🔴
 
-**Total: 0/2**
 
 </td>
 <td width="33%" align="center">
 
-### 🔄 Weekly Pull Requests
-**Goal Status:  🔴 Failed**
-Target: 2 pull requests per week
-- 🟢 0 successfully merged
-- 🔴 0 closed without merging
-**Total: 0/2**
+### 🔄 Weekly
+`0/2 PRs`  🔴
+`0✓ 0✗`
 
 </td>
 </tr>
