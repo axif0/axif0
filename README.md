@@ -43,6 +43,24 @@ I'm passionate about learning new tech even it is completely unknown and sounds 
 - Total stars: 5
 - Total forks: 7
 - Contributors across repos: 5
+
+### Codeforces Progress
+- Total problems solved: 0
+- Today's progress: 0/2 problems
+- ⚠️ Remaining today: 2 problems
+
+
+### Monthly Organizations Goal Failed 🔴
+Goal: 2 successful contributions
+Total successful contributions: 0
+
+
+### Weekly Pull Requests Goal Failed 🔴
+Goal: 2 pull requests per week
+- 🟢 0 successfully merged
+- 🔴 0 closed without merging
+Total PRs this week: 0
+
 - Last updated: 2025-07-28
 
 <!-- STATS:END -->
