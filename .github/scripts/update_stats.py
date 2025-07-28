@@ -84,18 +84,16 @@ def get_monthly_org_contributions():
     month_start = datetime(now.year, now.month, 1)
     
     # Get all PRs created in the last month
-    monthly_prs = user.get_user().get_pulls(state='all', sort='created', direction='desc')
+    monthly_prs = g.search_issues(f'author:axif0 type:pr created:>={month_start.strftime("%Y-%m-%d")}')
     org_stats = defaultdict(lambda: {'success': 0, 'failed': 0})
     
     for pr in monthly_prs:
-        if pr.created_at < month_start:
-            break
-            
-        org_name = pr.base.repo.organization.login if pr.base.repo.organization else pr.base.repo.owner.login
-        if pr.state == 'closed' and pr.merged:
-            org_stats[org_name]['success'] += 1
-        elif pr.state == 'closed' and not pr.merged:
-            org_stats[org_name]['failed'] += 1
+        if hasattr(pr, 'base'):  # Check if it's a PR
+            org_name = pr.base.repo.organization.login if pr.base.repo.organization else pr.base.repo.owner.login
+            if pr.state == 'closed' and pr.merged:
+                org_stats[org_name]['success'] += 1
+            elif pr.state == 'closed' and not pr.merged:
+                org_stats[org_name]['failed'] += 1
             
     return org_stats
 
@@ -104,18 +102,17 @@ def get_weekly_pr_metrics():
     now = datetime.utcnow()
     week_start = now - timedelta(days=7)
     
-    weekly_prs = user.get_user().get_pulls(state='all', sort='created', direction='desc')
+    # Get all PRs created in the last week
+    weekly_prs = g.search_issues(f'author:axif0 type:pr created:>={week_start.strftime("%Y-%m-%d")}')
     success_count = 0
     failed_count = 0
     
     for pr in weekly_prs:
-        if pr.created_at < week_start:
-            break
-            
-        if pr.state == 'closed' and pr.merged:
-            success_count += 1
-        elif pr.state == 'closed' and not pr.merged:
-            failed_count += 1
+        if hasattr(pr, 'base'):  # Check if it's a PR
+            if pr.state == 'closed' and pr.merged:
+                success_count += 1
+            elif pr.state == 'closed' and not pr.merged:
+                failed_count += 1
             
     return success_count, failed_count
 
