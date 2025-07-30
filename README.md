@@ -51,8 +51,8 @@ I'm passionate about learning new tech even it is completely unknown and sounds 
 <td width="33%" align="center">
 
 ### [📊 Codeforces](https://codeforces.com/profile/asif2001)
-`103 solved` • `0/2 today`
-⚠️ 2 left
+`105 solved` • `2/2 today`
+✅ Done
 
 </td>
 <td width="33%" align="center">
