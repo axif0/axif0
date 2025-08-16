@@ -51,7 +51,7 @@ I'm passionate about learning new tech even it is completely unknown and sounds 
 <td width="33%" align="center">
 
 ### [📊 Codeforces](https://codeforces.com/profile/asif2001)
-`109 solved` • `0/2 today`
+`0 solved` • `0/2 today`
 ⚠️ 2 left
 
 </td>
@@ -74,6 +74,6 @@ I'm passionate about learning new tech even it is completely unknown and sounds 
 
 </div>
 
-- Last updated: 2025-08-15
+- Last updated: 2025-08-16
 
 <!-- STATS:END -->
