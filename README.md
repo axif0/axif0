@@ -42,7 +42,7 @@ I'm passionate about learning new tech even it is completely unknown and sounds 
 - Public repositories: 35
 - Total stars: 5
 - Total forks: 7
-- Contributors across repos: 5
+- Contributors across repos: 4
 
 <div align="center">
 
@@ -74,6 +74,6 @@ I'm passionate about learning new tech even it is completely unknown and sounds 
 
 </div>
 
-- Last updated: 2025-09-30
+- Last updated: 2025-10-01
 
 <!-- STATS:END -->
