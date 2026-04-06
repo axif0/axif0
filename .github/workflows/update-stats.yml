@@ -1,40 +1,31 @@
-name: Update GitHub Stats
+name: Update stats
 
 on:
   schedule:
-    - cron: '0 15 * * *'  # runs daily at 20:00 UTC
-  workflow_dispatch:
+    - cron: "0 11 * * *" # every 24 hours
+  push:
+    branches:
+      - master
 
 jobs:
-  update-stats:
+  publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - uses: actions/checkout@v3
         with:
-          python-version: '3.10'
-
-      - name: Install dependencies
+          fetch-depth: 0
+      - name: Generate README.md
+        uses: orhun/profile-readme-stats@master
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          lifetimeStreak: true
+      - name: Update README.md
+        shell: bash
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
-      - name: Run update script
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: python .github/scripts/update_stats.py
-
-      - name: Commit changes
-        run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          git add README.md
-          # Only add cf_daily_solved.txt if it exists
-          if [ -f .github/data/cf_daily_solved.txt ]; then
-            git add .github/data/cf_daily_solved.txt
+          if [[ "$(git status --porcelain)" != "" ]]; then
+            git config user.name 'axif'
+            git config user.email 'muhamadasif570@gmail.com'
+            git add *.md
+            git commit -m "Update README.md"
+            git push
           fi
-          git commit -m "Update GitHub stats [bot]" || echo "No changes"
-          git push
