@@ -10,7 +10,7 @@
  
 **Talking about Personal Stuffs:** ![image](https://64.media.tumblr.com/93edd69c8d40da06bc3675af6b7c54cf/6a4882f7400b4ba7-b9/s75x75_c1/20e244949b842a7d6add264e62b61cd731f27811.gifv)
 
-I'm passionate about learning new tech even it is completely unknown and sounds interesting to me. Rather complaining others I like to do my tasks within time limit and try to help others.
+I'm passionate about learning new tech even it is completely unknown and sounds interesting to me. Rather complaining others I like to do my tasks within time limit and try to contribute to others.
 - 💬 Ask me about anything, I am happy to help;
 - 📫 How to reach me: [@afi570](https://www.linkedin.com/in/afi570/);
 
@@ -36,6 +36,6 @@ I'm passionate about learning new tech even it is completely unknown and sounds 
 <!-- https://user-images.githubusercontent.com/14244685/87203964-90470080-c325-11ea-97b6-2da5a6e0ddbb.gif-->
 
 
-I joined GitHub **6** years ago and have since pushed **2163** commits, opened **39** issues, submitted **185** pull requests, and earned **8** stars across **43** personal projects, with contributions to **24** public repositories.
+I joined GitHub **6** years ago and have since pushed **2165** commits, opened **39** issues, submitted **185** pull requests, and earned **8** stars across **43** personal projects, with contributions to **24** public repositories.
 
-I'm currently on a **109**-day commit streak.
+I'm currently on a **111**-day commit streak.
